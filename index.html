@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)file:///C:/Users/fwa/Downloads/Einsatzplanung_Auslastungsbericht_6.html -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Einsatzplanung - Auslastungsbericht</title>
+<style>
+  :root {
+    --surface-2: #ffffff;
+    --surface-1: #f4f3f0;
+    --surface-0: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --border: rgba(11,11,11,0.10);
+    --radius: 8px;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    line-height: 1.5;
+  }
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  h1 { font-size: 26px; font-weight: 500; margin: 0; }
+  h2 { font-size: 19px; font-weight: 500; margin: 0; }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .chart-col p.col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 6px;
+  }
+  @media (max-width: 760px) {
+    .page { padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 21px; }
+    .chart-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div style="margin-bottom: 2rem;">
+  <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 4px;">Zentraler Ordner Ressourcenplanung · Auswertung vom 25.06.2026</p>
+  <h1 style="margin: 0 0 6px;">Einsatzplanung – Auslastungsbericht</h1>
+  <p style="font-size: 15px; color: var(--text-secondary); margin: 0;">mur · pco · ksy · jol · kvo · ans · dpe · jer · bel · fwa &nbsp;—&nbsp; Zeitraum: KW26 2026 bis KW23 2027 (1 Jahr)</p>
+  <p style="font-size: 13px; color: #a06a00; background: rgba(237,161,0,0.12); border-radius: 6px; padding: 8px 12px; margin: 10px 0 0; line-height: 1.6;">
+  <strong>Hinweis:</strong> Die Einträge „ZZ99940 Ferien“ sind in dieser Version <strong>nicht</strong> berücksichtigt –
+  alle Zahlen zeigen die reine Projektauslastung ohne Ferienzeiten. Da die Ferienwochen im flach extrahierten PDF-Text nicht
+  eindeutig positioniert sind, wurden sie näherungsweise anhand auffälliger Ausreisser in den Wochenwerten identifiziert und
+  entfernt (Betrag je Person entspricht der Summe der dokumentierten Feriententage). Einzelne Wochen können daher von den
+  effektiven Werten abweichen.
+  </p>
+</div>
+
+<h2 style="margin: 0 0 4px;">1. Auslastung pro Person</h2>
+<p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 10px;">Geplante Auslastung in % über die vollen 51 Wochen. Die gestrichelte Linie markiert 100%.</p>
+<div class="chart-row" style="margin-bottom: 8px;">
+  <div class="chart-col">
+    <p class="col-title">ksy · pco · jol · kvo · mur · fwa</p>
+    <div id="legendA1" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:6px;font-size:11px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#eda100;"></span>ksy</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#1baf7a;"></span>pco</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#008300;"></span>jol</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#4a3aa7;"></span>kvo</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#2a78d6;"></span>mur</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#9085e9;"></span>fwa</span></div>
+    <div style="position: relative; width: 100%; height: 340px;">
+      <canvas id="auslChartA" role="img" aria-label="Liniendiagramm der wochenweisen Auslastung fuer ksy, pco, jol, kvo, mur und fwa von KW26 2026 bis KW23 2027" width="928" height="612" style="display: block; box-sizing: border-box; height: 340px; width: 516px;"></canvas>
+    </div>
+  </div>
+  <div class="chart-col">
+    <p class="col-title">ans · dpe · jer · bel</p>
+    <div id="legendB1" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:6px;font-size:11px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#e34948;"></span>ans</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#e87ba4;"></span>dpe</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#eb6834;"></span>jer</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#6b4a2f;"></span>bel</span></div>
+    <div style="position: relative; width: 100%; height: 340px;">
+      <canvas id="auslChartB" role="img" aria-label="Liniendiagramm der wochenweisen Auslastung fuer ans, dpe, jer und bel von KW26 2026 bis KW23 2027" width="928" height="612" style="display: block; box-sizing: border-box; height: 340px; width: 516px;"></canvas>
+    </div>
+  </div>
+</div>
+
+<h2 style="margin: 2rem 0 4px;">2. Unterdeckung pro Person</h2>
+<p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 10px;">Auslastung abzüglich vertraglichem Pensum. Die gelbe Fläche markiert die Unterdeckung (zu wenig Arbeit, Auslastung unter Pensum), Werte über der 0%-Linie zeigen Überdeckung (mehr Arbeit als Pensum).</p>
+<div class="chart-row" style="margin-bottom: 8px;">
+  <div class="chart-col">
+    <p class="col-title">ksy · pco · jol · kvo · mur · fwa</p>
+    <div id="legendA2" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:6px;font-size:11px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#eda100;"></span>ksy</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#1baf7a;"></span>pco</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#008300;"></span>jol</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#4a3aa7;"></span>kvo</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#2a78d6;"></span>mur</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#9085e9;"></span>fwa</span></div>
+    <div style="position: relative; width: 100%; height: 340px;">
+      <canvas id="underChartA" role="img" aria-label="Liniendiagramm der wochenweisen Unter- oder Ueberdeckung fuer ksy, pco, jol, kvo, mur und fwa von KW26 2026 bis KW23 2027" width="928" height="612" style="display: block; box-sizing: border-box; height: 340px; width: 516px;"></canvas>
+    </div>
+  </div>
+  <div class="chart-col">
+    <p class="col-title">ans · dpe · jer · bel</p>
+    <div id="legendB2" style="display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:6px;font-size:11px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#e34948;"></span>ans</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#e87ba4;"></span>dpe</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#eb6834;"></span>jer</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#6b4a2f;"></span>bel</span></div>
+    <div style="position: relative; width: 100%; height: 340px;">
+      <canvas id="underChartB" role="img" aria-label="Liniendiagramm der wochenweisen Unter- oder Ueberdeckung fuer ans, dpe, jer und bel von KW26 2026 bis KW23 2027" width="928" height="612" style="display: block; box-sizing: border-box; height: 340px; width: 516px;"></canvas>
+    </div>
+  </div>
+</div>
+
+<h2 style="margin: 2rem 0 4px;">3. Offene Anfragen – _ing_hb</h2>
+<p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 10px;">Noch nicht zugewiesener Bedarf im Team „Ingenieur:innen (HB)“, aufgeteilt nach den zwei zugrundeliegenden Anfragen (Projekten).</p>
+<div id="legendIng" style="display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:8px;font-size:12px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#eda100;"></span>25390 Sekundarschulhaus Stadel</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#4a3aa7;"></span>26020 Schul- und Sportanlage Bubikon</span></div>
+<div style="position: relative; width: 100%; height: 300px; margin-bottom: 10px;">
+  <canvas id="ingHbChart" role="img" aria-label="Gestapeltes Balkendiagramm des wochenweisen offenen Bedarfs der zwei ing_hb Anfragen von KW26 2026 bis KW23 2027" width="1893" height="540" style="display: block; box-sizing: border-box; height: 300px; width: 1052px;"></canvas>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 8px;">
+  <p style="font-size: 14px; margin: 0 0 8px; font-weight: 500;">Zusammenfassung _ing_hb</p>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 8px;">
+  Die offenen Anfragen bestehen aus zwei Projekten: <strong>25390 Sekundarschulhaus Stadel</strong> (durchgehend 20%, mit
+  einer Spitze von 50% für 5 Wochen) und <strong>26020 Schul- und Sportanlage Bubikon</strong> (20% zu Beginn, danach für
+  7 Wochen 10%, anschliessend wieder 20%). Beide Anfragen laufen ab August 2026; 25390 zieht sich über einen deutlich
+  längeren Zeitraum hin als 26020.
+  </p>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 8px;">
+  <strong>Zuweisung:</strong> 25390 Sekundarschulhaus Stadel geht an <strong>mur</strong>, 26020 Schul- und Sportanlage
+  Bubikon geht an <strong>ksy</strong>. Die Auswirkung auf deren Auslastung ist in der Grafik unten (Punkt 4) dargestellt.
+  Mit der Zuweisung ist mur in 12 der 51 Wochen über seinem Pensum (80%, Spitze 195%), ksy in 16 von 51 Wochen über ihrem
+  Pensum (60%, Spitze 90%) – primär in den ohnehin bereits dicht belegten Wochen im Sommer/Herbst 2026.
+  </p>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0 0 8px;">
+  <strong>Zum Vergleich (vertauscht, gestrichelt in Punkt 4):</strong> mur mit 26020 Bubikon statt Stadel wäre in 11 statt
+  12 Wochen über Pensum – minimal besser. ksy mit 25390 Stadel statt Bubikon wäre in 17 statt 16 Wochen über Pensum
+  (Spitze 95% statt 90%) – leicht schlechter, insbesondere im Oktober/November 2026. Die ursprüngliche Zuordnung
+  (Stadel→mur, Bubikon→ksy) bleibt damit die leicht vorteilhaftere Variante.
+  </p>
+  <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+  Hinweis: Die genaue wöchentliche Lage der beiden Anfragen liess sich aus dem flach extrahierten PDF-Text nicht
+  vollständig eindeutig rekonstruieren (fehlende Spaltentrennzeichen); die Darstellung basiert auf der plausibelsten
+  Zuordnung ab der ersten Bedarfswoche (03.08.2026).
+  </p>
+</div>
+
+<h2 style="margin: 2rem 0 4px;">4. Auslastung MUR und KSY inkl. zugewiesener Anfragen</h2>
+<p style="font-size: 14px; color: var(--text-secondary); margin: 0 0 10px;">Wie Grafik 1, aber nur für mur und ksy. Durchgezogen: mur mit 25390 Stadel, ksy mit 26020 Bubikon (aktuelle Zuordnung). Gestrichelt: die vertauschte Zuordnung (mur mit 26020 Bubikon, ksy mit 25390 Stadel) zum Vergleich. Die graue gestrichelte Linie markiert 100%.</p>
+<div id="legendAssign" style="display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:6px;font-size:12px;color:var(--text-secondary);"><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#2a78d6;"></span>mur (inkl. 25390 Stadel)</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:#eda100;"></span>ksy (inkl. 26020 Bubikon)</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:14px;height:0;border-top:2px dashed #2a78d6;"></span>mur (inkl. 26020 Bubikon, vertauscht)</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:14px;height:0;border-top:2px dashed #eda100;"></span>ksy (inkl. 25390 Stadel, vertauscht)</span></div>
+<div style="position: relative; width: 100%; height: 340px; margin-bottom: 8px;">
+  <canvas id="assignChart" role="img" aria-label="Liniendiagramm der Auslastung von MUR und KSY inklusive der zugewiesenen offenen Anfragen von KW26 2026 bis KW23 2027" width="1893" height="612" style="display: block; box-sizing: border-box; height: 340px; width: 1052px;"></canvas>
+</div>
+
+<h2 style="margin: 2rem 0 12px;">5. Zusammenfassung pro Mitarbeiter</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px;">
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">mur – Simon Murbach (80%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien startet die Auslastung bei einer Spitze von 195% im Juli 2026, fällt danach kontinuierlich und liegt ab Ende 2026 durchgehend bei 0%. Jahresdurchschnitt 41% – deutlich unter Pensum, freie Kapazität vor allem ab 2027. Neu zugewiesen: Anfrage 25390 Sekundarschulhaus Stadel (siehe Punkt 4).</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">pco – Pieter De Coninck (80%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien etwas moderater: Schwankung zwischen 15% und 120% (Spitze im September/Oktober 2026). Pendelt sich 2027 bei 30–40% ein. Jahresdurchschnitt 62%, mehrfach leicht über Pensum.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">ksy – Katarina Kaltenbach (60%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien deutlich moderater: Schwankung zwischen 0% und 90%. Nach hoher Belastung im Sommer/Herbst 2026 sinkt die Auslastung 2027 auf durchgehend 0–10%. Jahresdurchschnitt 27%. Neu zugewiesen: Anfrage 26020 Schul- und Sportanlage Bubikon (siehe Punkt 4).</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">jol – Jelena Ogrizovic-Leube (80%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien meist konstant bei 80% bis Ende Dezember 2026 (mit drei Wochen 0% durch entfernte Ferienzeiten), danach durchgehend 0% für den Rest des Zeitraums. Jahresdurchschnitt 35%. Fast ausschliesslich ein Projekt (Kantonsschule Stein im Fricktal).</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">kvo – Konstantinos Voulpiotis (100%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Sehr hohe Auslastung im zweiten Halbjahr 2026 (bis 150%), sinkt ab Januar 2027 auf ein stabiles Niveau von 35–40%. Jahresdurchschnitt 73%, nie unter 35%.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">ans – Antonia Schittich (100%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien fast durchgehend bei 100% bis Ende 2026 (die frühere Spitze von 200% verschwindet), danach durchgehend 30% bis Mai 2027 mit Anstieg auf 50% im letzten Monat. Jahresdurchschnitt 59%.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">dpe – David Pelichet (100%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Klar sinkender Trend: von 125% im Juni 2026 auf 0% ab Ende 2026, bleibt für den Rest des Jahres bei 0–10%. Für dpe ist keine Ferien-Buchung im Datensatz vermerkt, die Werte sind daher unverändert. Grösste freie Reserve der Gruppe, Jahresdurchschnitt nur 27%.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">jer – Jon Erice (100%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Ohne Ferien: Spitze von 75% (statt 175%) Ende Juni 2026, danach überwiegend zwischen 20% und 90%, ab 2027 stabil bei 20–60%. Jahresdurchschnitt 53%, nie über Pensum.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">bel – Benjamin Lirette (100%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Weiterhin die am stärksten ausgelastete Person: Jahresdurchschnitt 80%, mit wiederholten Überbuchungen bis 125% (November/Dezember 2026, statt zuvor 205% inkl. Ferien). Ab Frühjahr 2027 Entspannung auf 20–70%.</p>
+</div>
+
+<div style="background: var(--surface-1); border-radius: var(--radius); padding: 1rem 1.25rem;">
+<p style="font-size: 14px; font-weight: 500; margin: 0 0 6px;">fwa – Flavio Wanninger (90%)</p>
+<p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0;">Hoch belastet im Sommer 2026 (bis 82% Ende Juli), fällt danach deutlich und liegt Mitte September bis Mitte Oktober bei nur 0–5% – die grösste kurzfristige freie Reserve der Gruppe. Pendelt sich ab November bei 10–30% ein. Jahresdurchschnitt 28%. Hinweis: Werte für fwa basieren auf vielen kleinen Projektanteilen (2–10%) und sind mit etwas höherer Unsicherheit rekonstruiert als bei den übrigen Personen.</p>
+</div>
+
+</div>
+
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2rem;">Werte basieren auf den kumulierten Wochensummen der Einsatzplanung (Auswertung vom 25.06.2026). Werte über 100% zeigen eine gleichzeitige Zuteilung auf mehrere Projekte über das Pensum hinaus.</p>
+
+</div>
+
+<script src="./index_files/chart.umd.js.Herunterladen"></script>
+<script>
+const labels = ["22.06.26","29.06.26","06.07.26","13.07.26","20.07.26","27.07.26","03.08.26","10.08.26","17.08.26","24.08.26","31.08.26","07.09.26","14.09.26","21.09.26","28.09.26","05.10.26","12.10.26","19.10.26","26.10.26","02.11.26","09.11.26","16.11.26","23.11.26","30.11.26","07.12.26","14.12.26","21.12.26","28.12.26","04.01.27","11.01.27","18.01.27","25.01.27","01.02.27","08.02.27","15.02.27","22.02.27","01.03.27","08.03.27","15.03.27","22.03.27","29.03.27","05.04.27","12.04.27","19.04.27","26.04.27","03.05.27","10.05.27","17.05.27","24.05.27","31.05.27","07.06.27"];
+
+const auslastung = {
+"mur": [90, 95, 95, 195, 115, 195, 95, 95, 95, 95, 95, 55, 55, 55, 55, 45, 45, 45, 45, 35, 35, 35, 35, 25, 25, 25, 25, 25, 20, 20, 20, 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+"pco": [80, 85, 85, 105, 120, 120, 115, 115, 115, 115, 75, 75, 75, 75, 80, 95, 95, 95, 95, 80, 60, 60, 60, 60, 55, 55, 55, 45, 40, 40, 40, 40, 40, 30, 30, 30, 30, 30, 30, 30, 30, 40, 40, 40, 40, 40, 40, 40, 40, 40, 15],
+"ksy": [70, 90, 75, 75, 75, 30, 30, 60, 55, 45, 45, 25, 25, 25, 25, 25, 25, 25, 25, 5, 5, 45, 45, 45, 45, 45, 45, 45, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+"jol": [0, 80, 80, 80, 0, 0, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 40, 80, 80, 80, 80, 80, 80, 80, 80, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+"kvo": [150, 150, 120, 120, 110, 110, 100, 100, 100, 90, 90, 100, 100, 100, 100, 100, 100, 100, 100, 95, 95, 95, 95, 95, 85, 85, 80, 80, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35],
+"ans": [70, 90, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 60, 60, 60, 60, 60, 50, 50, 30, 0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 50],
+"dpe": [125, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 15, 15, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+"jer": [75, 45, 45, 45, 65, 65, 65, 65, 65, 40, 40, 90, 90, 90, 90, 90, 90, 90, 90, 70, 20, 20, 20, 20, 60, 60, 60, 40, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+"bel": [105, 105, 70, 45, 75, 50, 50, 50, 50, 50, 45, 105, 105, 105, 105, 105, 105, 105, 105, 125, 125, 125, 125, 125, 125, 125, 95, 95, 110, 110, 120, 120, 120, 120, 120, 120, 30, 30, 30, 30, 30, 30, 20, 20, 20, 50, 50, 50, 40, 60, 70],
+"fwa": [67, 77, 52, 57, 15, 21, 47, 0, 62, 57, 72, 67, 5, 5, 5, 5, 35, 0, 30, 30, 30, 30, 25, 25, 25, 25, 25, 25, 25, 25, 25, 20, 20, 20, 20, 20, 15, 15, 15, 15, 15, 15, 10, 10, 22, 22, 42, 42, 42, 42, 22]
+};
+
+const unterdeckung = {
+"mur": [10, 15, 15, 115, 35, 115, 15, 15, 15, 15, 15, -25, -25, -25, -25, -35, -35, -35, -35, -45, -45, -45, -45, -55, -55, -55, -55, -55, -60, -60, -60, -60, -70, -70, -70, -70, -70, -70, -70, -70, -70, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80],
+"pco": [0, 5, 5, 25, 40, 40, 35, 35, 35, 35, -5, -5, -5, -5, 0, 15, 15, 15, 15, 0, -20, -20, -20, -20, -25, -25, -25, -35, -40, -40, -40, -40, -40, -50, -50, -50, -50, -50, -50, -50, -50, -40, -40, -40, -40, -40, -40, -40, -40, -40, -65],
+"ksy": [10, 30, 15, 15, 15, -30, -30, 0, -5, -15, -15, -35, -35, -35, -35, -35, -35, -35, -35, -55, -55, -15, -15, -15, -15, -15, -15, -15, -15, -55, -55, -55, -55, -55, -55, -55, -55, -55, -55, -55, -60, -50, -50, -50, -50, -50, -50, -50, -50, -50, -50],
+"jol": [-80, 0, 0, 0, -80, -80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40, 0, 0, 0, 0, 0, 0, 0, 0, 0, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80],
+"kvo": [50, 50, 20, 20, 10, 10, 0, 0, 0, -10, -10, 0, 0, 0, 0, 0, 0, 0, 0, -5, -5, -5, -5, -5, -15, -15, -20, -20, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -60, -65, -65, -65, -65, -65, -65, -65, -65, -65, -65],
+"ans": [-30, -10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40, -40, -40, -40, -40, -50, -50, -70, -100, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -70, -50],
+"dpe": [25, -35, -35, -35, -35, -35, -35, -35, -35, -35, -35, -65, -65, -65, -65, -65, -65, -65, -65, -65, -65, -65, -65, -65, -85, -85, -100, -100, -90, -90, -90, -90, -90, -90, -90, -90, -90, -90, -90, -90, -90, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100],
+"jer": [-25, -55, -55, -55, -35, -35, -35, -35, -35, -60, -60, -10, -10, -10, -10, -10, -10, -10, -10, -30, -80, -80, -80, -80, -40, -40, -40, -60, -40, -40, -40, -40, -40, -40, -40, -40, -40, -40, -40, -40, -40, -80, -80, -80, -80, -80, -80, -80, -80, -80, -80],
+"bel": [5, 5, -30, -55, -25, -50, -50, -50, -50, -50, -55, 5, 5, 5, 5, 5, 5, 5, 5, 25, 25, 25, 25, 25, 25, 25, -5, -5, 10, 10, 20, 20, 20, 20, 20, 20, -70, -70, -70, -70, -70, -70, -80, -80, -80, -50, -50, -50, -60, -40, -30],
+"fwa": [-23, -13, -38, -33, -75, -69, -43, -90, -28, -33, -18, -23, -85, -85, -85, -85, -55, -90, -60, -60, -60, -60, -65, -65, -65, -65, -65, -65, -65, -65, -65, -70, -70, -70, -70, -70, -75, -75, -75, -75, -75, -75, -80, -80, -68, -68, -48, -48, -48, -48, -68]
+};
+
+const ingHbProjects = [
+  {
+    key: "p25390",
+    label: "25390 Sekundarschulhaus Stadel",
+    color: "#eda100",
+    start: 6,
+    data: [20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,50,50,50,50,50,20,20,20,20,20,20,20,20,20,20,20,20,20]
+  },
+  {
+    key: "p26020",
+    label: "26020 Schul- und Sportanlage Bubikon",
+    color: "#4a3aa7",
+    start: 6,
+    data: [20,20,20,20,20,10,10,10,10,10,10,10,20,20,20,20,20,20,20,20,20,20]
+  }
+];
+
+function projectSeries(proj){
+  const arr = new Array(labels.length).fill(0);
+  proj.data.forEach((v,i) => {
+    const idx = proj.start + i;
+    if (idx < arr.length) arr[idx] = v;
+  });
+  return arr;
+}
+
+function buildIngLegend(){
+  const el = document.getElementById('legendIng');
+  el.innerHTML = ingHbProjects.map(p => '<span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:' + p.color + ';"></span>' + p.label + '</span>').join('');
+}
+buildIngLegend();
+
+const colors = {mur:'#2a78d6',pco:'#1baf7a',ksy:'#eda100',jol:'#008300',kvo:'#4a3aa7',ans:'#e34948',dpe:'#e87ba4',jer:'#eb6834',bel:'#6b4a2f',fwa:'#9085e9'};
+const groupA = ['ksy','pco','jol','kvo','mur','fwa'];
+const groupB = ['ans','dpe','jer','bel'];
+
+function buildLegend(elId, group){
+  const el = document.getElementById(elId);
+  el.innerHTML = group.map(k => '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:' + colors[k] + ';"></span>' + k + '</span>').join('');
+}
+buildLegend('legendA1', groupA);
+buildLegend('legendB1', groupB);
+buildLegend('legendA2', groupA);
+buildLegend('legendB2', groupB);
+
+function lineDatasets(data, group){
+  return group.map(k => ({
+    label: k, data: data[k], borderColor: colors[k], backgroundColor: colors[k],
+    borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: 0.15, fill: false
+  }));
+}
+
+const hundredLinePlugin = {
+  id: 'hundredLine',
+  afterDraw: (chart) => {
+    const y = chart.scales.y.getPixelForValue(100);
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.strokeStyle = '#c3c2b7';
+    ctx.setLineDash([5,4]);
+    ctx.beginPath();
+    ctx.moveTo(chart.chartArea.left, y);
+    ctx.lineTo(chart.chartArea.right, y);
+    ctx.stroke();
+    ctx.restore();
+  }
+};
+
+const yellowShadePlugin = {
+  id: 'yellowShade',
+  beforeDatasetsDraw: (chart) => {
+    const yScale = chart.scales.y;
+    const zeroY = yScale.getPixelForValue(0);
+    const bottomY = chart.chartArea.bottom;
+    if (zeroY >= bottomY) return;
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.fillStyle = 'rgba(237, 161, 0, 0.18)';
+    ctx.fillRect(chart.chartArea.left, zeroY, chart.chartArea.right - chart.chartArea.left, bottomY - zeroY);
+    ctx.restore();
+  }
+};
+
+function makeAuslChart(canvasId, group){
+  new Chart(document.getElementById(canvasId), {
+    type: 'line',
+    data: { labels: labels, datasets: lineDatasets(auslastung, group) },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + '%' } }
+      },
+      scales: {
+        x: { ticks: { autoSkip: true, maxTicksLimit: 12, color: '#898781', font: { size: 10 } }, grid: { display: false } },
+        y: { title: { display: true, text: 'Auslastung in %', color: '#52514e', font: { size: 11 } }, ticks: { color: '#898781', font: { size: 10 } }, grid: { color: '#e1e0d9' }, min: 0 }
+      }
+    },
+    plugins: [hundredLinePlugin]
+  });
+}
+
+function makeUnderChart(canvasId, group){
+  new Chart(document.getElementById(canvasId), {
+    type: 'line',
+    data: { labels: labels, datasets: lineDatasets(unterdeckung, group) },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': ' + (ctx.parsed.y>0? '+':'') + ctx.parsed.y + ' Prozentpunkte' } }
+      },
+      scales: {
+        x: { ticks: { autoSkip: true, maxTicksLimit: 12, color: '#898781', font: { size: 10 } }, grid: { display: false } },
+        y: { title: { display: true, text: 'Unter- oder Überdeckung in %', color: '#52514e', font: { size: 11 } }, ticks: { color: '#898781', font: { size: 10 } }, grid: { color: (c) => c.tick.value === 0 ? '#0b0b0b' : '#e1e0d9' } }
+      }
+    },
+    plugins: [yellowShadePlugin]
+  });
+}
+
+makeAuslChart('auslChartA', groupA);
+makeAuslChart('auslChartB', groupB);
+makeUnderChart('underChartA', groupA);
+makeUnderChart('underChartB', groupB);
+
+new Chart(document.getElementById('ingHbChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: ingHbProjects.map(p => ({
+      label: p.label,
+      data: projectSeries(p),
+      backgroundColor: p.color,
+      borderRadius: 2,
+      maxBarThickness: 14,
+      stack: 'ing_hb'
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + '%' } }
+    },
+    scales: {
+      x: { stacked: true, ticks: { autoSkip: true, maxTicksLimit: 20, color: '#898781', font: { size: 11 } }, grid: { display: false } },
+      y: { stacked: true, title: { display: true, text: 'Bedarf in %', color: '#52514e', font: { size: 12 } }, ticks: { color: '#898781', font: { size: 11 } }, grid: { color: '#e1e0d9' }, min: 0 }
+    }
+  }
+});const mur_assigned = [90, 95, 95, 195, 115, 195, 115, 115, 115, 115, 115, 75, 75, 75, 75, 65, 65, 65, 65, 55, 55, 55, 85, 75, 75, 75, 75, 45, 40, 40, 40, 40, 30, 30, 30, 30, 30, 30, 30, 30, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const ksy_assigned = [70, 90, 75, 75, 75, 30, 50, 80, 75, 65, 65, 35, 35, 35, 35, 35, 35, 35, 45, 25, 25, 65, 65, 65, 65, 65, 65, 65, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+const mur_swapped = [90, 95, 95, 195, 115, 195, 115, 115, 115, 115, 115, 65, 65, 65, 65, 55, 55, 55, 65, 55, 55, 55, 55, 45, 45, 45, 45, 45, 20, 20, 20, 20, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const ksy_swapped = [70, 90, 75, 75, 75, 30, 50, 80, 75, 65, 65, 45, 45, 45, 45, 45, 45, 45, 45, 25, 25, 65, 95, 95, 95, 95, 95, 65, 65, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+
+function buildAssignLegend(){
+  const el = document.getElementById('legendAssign');
+  el.innerHTML =
+    '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:' + colors.mur + ';"></span>mur (inkl. 25390 Stadel)</span>' +
+    '<span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:' + colors.ksy + ';"></span>ksy (inkl. 26020 Bubikon)</span>' +
+    '<span style="display:flex;align-items:center;gap:4px;"><span style="width:14px;height:0;border-top:2px dashed ' + colors.mur + ';"></span>mur (inkl. 26020 Bubikon, vertauscht)</span>' +
+    '<span style="display:flex;align-items:center;gap:4px;"><span style="width:14px;height:0;border-top:2px dashed ' + colors.ksy + ';"></span>ksy (inkl. 25390 Stadel, vertauscht)</span>';
+}
+buildAssignLegend();
+
+new Chart(document.getElementById('assignChart'), {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'mur (inkl. 25390 Stadel)', data: mur_assigned, borderColor: colors.mur, backgroundColor: colors.mur, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: 0.15, fill: false },
+      { label: 'ksy (inkl. 26020 Bubikon)', data: ksy_assigned, borderColor: colors.ksy, backgroundColor: colors.ksy, borderWidth: 2, pointRadius: 0, pointHoverRadius: 3, tension: 0.15, fill: false },
+      { label: 'mur (inkl. 26020 Bubikon, vertauscht)', data: mur_swapped, borderColor: colors.mur, backgroundColor: colors.mur, borderWidth: 2, borderDash: [6,4], pointRadius: 0, pointHoverRadius: 3, tension: 0.15, fill: false },
+      { label: 'ksy (inkl. 25390 Stadel, vertauscht)', data: ksy_swapped, borderColor: colors.ksy, backgroundColor: colors.ksy, borderWidth: 2, borderDash: [6,4], pointRadius: 0, pointHoverRadius: 3, tension: 0.15, fill: false }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'nearest', axis: 'x', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y + '%' } }
+    },
+    scales: {
+      x: { ticks: { autoSkip: true, maxTicksLimit: 20, color: '#898781', font: { size: 11 } }, grid: { display: false } },
+      y: { title: { display: true, text: 'Auslastung in %', color: '#52514e', font: { size: 12 } }, ticks: { color: '#898781', font: { size: 11 } }, grid: { color: '#e1e0d9' }, min: 0 }
+    }
+  },
+  plugins: [hundredLinePlugin]
+});
+</script>
+
+
+</body></html>
